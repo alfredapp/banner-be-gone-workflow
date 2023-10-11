@@ -6,7 +6,7 @@ Close notification alerts
 
 ## Usage
 
-Clear macOS notification banners via the `notclear` keyword.
+Clear visible macOS notification banners via the `notclear` keyword.
 
 ![Clearing notification banners](Workflow/images/about/notclear.png)
 
