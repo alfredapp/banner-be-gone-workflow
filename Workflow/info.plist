@@ -90,6 +90,8 @@ Application("System Events")
 				<integer>2</integer>
 				<key>keyword</key>
 				<string>{var:clear_keyword}</string>
+				<key>skipuniversalaction</key>
+				<true/>
 				<key>subtext</key>
 				<string>Close notification banners</string>
 				<key>text</key>
