@@ -82,15 +82,20 @@ function envVar(varName) {
     .objectForKey(varName).js
 }
 
-// Main
-Application("System Events")
+const group = Application("System Events")
   .applicationProcesses.byName("NotificationCenter")
   .windows[0]
   .groups[0]
-  .groups[0]
-  .scrollAreas[0]
-  .uiElements[0]
-  .buttons()
+
+// Use an additional layer of .groups[0] (macOS 15), fallback to single layer of .groups[0] (macOS 14)
+const scrollGroup = group.groups.length ? group.groups[0] : group
+
+const uiElements = scrollGroup.scrollAreas[0].uiElements[0]
+
+// Try .buttons() first (macOS 15), fallback to .groups() (macOS 14)
+const banners = uiElements.buttons().length ? uiElements.buttons() : uiElements.groups()
+
+banners
   .map(banner =&gt; banner.actions().slice(-1)[0])
   .forEach(banner =&gt; banner.perform())</string>
 				<key>scriptargtype</key>
