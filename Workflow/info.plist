@@ -55,16 +55,15 @@
   .applicationProcesses.byName("NotificationCenter")
   .windows[0]
   .entireContents()
-  .reverse()
-  .forEach(item =&gt; {
+  .filter(item =&gt; {
     const subrole = item.subrole()
-    if (
-      subrole === "AXNotificationCenterAlert"      ||
-      subrole === "AXNotificationCenterAlertStack" ||
-      subrole === "AXNotificationCenterBanner"     ||
-      subrole === "AXNotificationCenterBannerStack"
-    ) item.actions().slice(-1)[0].perform()
-  })</string>
+    return subrole === "AXNotificationCenterAlert"       ||
+           subrole === "AXNotificationCenterAlertStack"  ||
+           subrole === "AXNotificationCenterBanner"      ||
+           subrole === "AXNotificationCenterBannerStack"
+  })
+  .reverse()
+  .forEach(notification =&gt; notification.actions().slice(-1)[0].perform())</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
